@@ -83,7 +83,6 @@ public class ParentAdapter extends RecyclerView.Adapter<ParentAdapter.ViewHolder
             }
         });
     }
-
     @Override
     public int getItemCount() {
         return mDataset.size();
@@ -107,4 +106,5 @@ public class ParentAdapter extends RecyclerView.Adapter<ParentAdapter.ViewHolder
             llCollapsingLayout = itemView.findViewById(R.id.ll_collapsing_layout);
         }
     }
+
 }

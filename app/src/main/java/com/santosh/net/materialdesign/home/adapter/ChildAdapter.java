@@ -2,7 +2,7 @@ package com.santosh.net.materialdesign.home.adapter;
 
 
 import android.content.Context;
-import android.support.design.widget.Snackbar;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,12 +12,13 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.santosh.net.materialdesign.R;
+import com.santosh.net.materialdesign.animation.BasicAnimation;
 import com.santosh.net.materialdesign.home.model.Child;
 
 import java.util.List;
 
 public class ChildAdapter extends ArrayAdapter<Child> implements View.OnClickListener {
-
+    Intent intent;
     Context mContext;
     private List<Child> dataSet;
     private int lastPosition = -1;
@@ -36,12 +37,14 @@ public class ChildAdapter extends ArrayAdapter<Child> implements View.OnClickLis
         Object object = getItem(position);
         Child dataModel = (Child) object;
 
-        switch (v.getId()) {
-            case R.id.child_title:
-                Snackbar.make(v, "Release date " + dataModel.getTitle(), Snackbar.LENGTH_LONG)
-                        .setAction("No action", null).show();
-                break;
-        }
+        selectItem(dataModel.getId());
+
+//        switch (v.getId()) {
+//            case R.id.child_title:
+//                Snackbar.make(v, "Release date " + dataModel.getTitle(), Snackbar.LENGTH_LONG)
+//                        .setAction("No action", null).show();
+//                break;
+//        }
     }
 
     @Override
@@ -79,10 +82,30 @@ public class ChildAdapter extends ArrayAdapter<Child> implements View.OnClickLis
         return convertView;
     }
 
+    private void selectItem(int id) {
+        switch (id) {
+            case 101:
+                intent = new Intent(mContext, BasicAnimation.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                mContext.startActivity(intent);
+                break;
+            case 102:
+
+                break;
+            case 103:
+
+                break;
+
+            default:
+                break;
+        }
+    }
+
     // View lookup cache
     private static class ViewHolder {
         TextView title;
 
     }
+
 }
 
